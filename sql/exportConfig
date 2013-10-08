@@ -1,0 +1,51 @@
+station_table.originColumns=station_id,station_name,station_ip,station_port,station_GPS,station_decription,station_address,station_telephone,station_contactPerson,station_voltageGrade,station_operationDate,station_company,station_description,"example@gmail.com"
+station_table.newColumns=station_id,station_name,station_ip,station_port,station_GPS,station_decription,station_address,station_telephone,station_contactPerson,station_voltageGrade,station_operationDate,station_company,station_description,email
+station_table.types=int,varchar,varchar,int,varchar,varchar,varchar,varchar,varchar,varchar,varchar,varchar,varchar,String
+station_table.priority = 100
+
+monitor_table.originColumns=monitor_id,station_id,monitor_name,monitor_ip,monitor_port,monitor_modelType,monitor_machineType,monitor_speed,monitor_PTZCom,monitor_PTZType,monitor_PTZBaudRate,monitor_index,monitor_activeFlag,monitor_description
+monitor_table.newColumns=monitor_id,station_id,monitor_name,monitor_ip,monitor_port,monitor_modelType,monitor_machineType,monitor_speed,monitor_PTZCom,monitor_PTZType,monitor_PTZBaudRate,monitor_index,monitor_activeFlag,monitor_description
+monitor_table.types=int,int,varchar,varchar,int,int,int,int,int,int,float,int,bit,varchar
+monitor_table.priority = 99
+
+point_table.originColumns=point_id,monitor_id,point_number,point_name,point_alarmMaxTemp,point_emissivity,point_ambTemp,point_distance,point_humidity,point_tempAdjust,point_focusSign,point_focusStep,point_activeFlag,point_IMGAdjustIndex,point_description,point_alarmMinTemp,point_preset,point_referenceAreaSn,point_referenceTemp,device_id
+point_table.newColumns=point_id,monitor_id,point_number,point_name,point_alarmMaxTemp,point_emissivity,point_ambTemp,point_distance,point_humidity,point_tempAdjust,point_focusSign,point_focusStep,point_activeFlag,point_IMGAdjustIndex,point_description,point_alarmMinTemp,point_preset,point_referenceAreaSn,point_referenceTemp,device_id
+point_table.types=int,int,int,varchar,float,float,float,float,float,float,int,int,bit,int,varchar,float,int,varchar,float,int
+point_table.priority = 98
+
+area_table.originColumns=area_id,monitor_id,point_id,area_sn,area_name,area_alarmMaxTemp,area_alarmMinTemp,area_emissivity,area_ambTemp,area_distance,area_humidity,area_tempAdjust,area_description,area_layerid,area_layerTypeid,area_points,area_normolTemp,area_seriousTemp,area_criticalTemp,area_redueType,area_showTmepInfo
+area_table.newColumns=area_id,monitor_id,point_id,area_sn,area_name,area_alarmMaxTemp,area_alarmMinTemp,area_emissivity,area_ambTemp,area_distance,area_humidity,area_tempAdjust,area_description,area_layerid,area_layerTypeid,area_points,area_normolTemp,area_seriousTemp,area_criticalTemp,area_redueType,area_showTmepInfo
+area_table.types=int,int,int,varchar,varchar,float,float,float,float,float,float,float,varchar,int,int,varchar,float,float,float,int,int
+area_table.priority = 97
+
+task_table.originColumns=task_id,monitor_id,task_name,task_description,task_alarmRecordFlag,task_recordTime,task_runTime,task_activeFlag,task_detectType,finesse_id
+task_table.newColumns=task_id,monitor_id,task_name,task_description,task_alarmRecordFlag,task_recordTime,task_runTime,task_activeFlag,task_detectType,finesse_id
+task_table.types=int,int,varchar,varchar,bit,int,datetime,bit,int,int
+task_table.priority = 96
+
+taskpoint_table.originColumns=taskpoint_id,task_id,point_id
+taskpoint_table.newColumns=taskpoint_id,task_id,point_id
+taskpoint_table.types=int,int,int
+taskpoint_table.priority = 95
+
+tasklog_table.originColumns=tasklog_id,task_id,monitor_id,tasklog_time,tasklog_state
+tasklog_table.newColumns=tasklog_id,task_id,monitor_id,tasklog_time,tasklog_state
+tasklog_table.types=int,int,int,datetime,int
+tasklog_table.priority = 94
+
+taskpointlog_table.originColumns=taskpointlog_id,tasklog_id,point_id,taskpointlog_time,taskpointlog_minTemp,taskpointlog_maxTemp,taskpointlog_alarmFlag,taskpointlog_snapName
+taskpointlog_table.newColumns=taskpointlog_id,tasklog_id,point_id,taskpointlog_time,taskpointlog_minTemp,taskpointlog_maxTemp,taskpointlog_alarmFlag,taskpointlog_snapName
+taskpointlog_table.types=int,int,int,datetime,float,float,bit,varchar
+taskpointlog_table.priority = 93
+
+taskarealog_table.originColumns=taskarealog_id,taskpointlog_id,taskarealog_type,taskarealog_minTemp,taskarealog_maxTemp,taskarealog_alarmTemp,taskarealog_time,area_id
+taskarealog_table.newColumns=taskarealog_id,taskpointlog_id,taskarealog_type,taskarealog_minTemp,taskarealog_maxTemp,taskarealog_alarmTemp,taskarealog_time,area_id
+taskarealog_table.types=int,int,int,float,float,float,datetime,int
+taskarealog_table.priority = 92
+
+alarm_table.originColumns=alarm_id,monitor_id,point_id,area_id,alarm_taskname,alarm_time,alarm_temp,alarm_realTemp,alarm_snapFilePath,alarm_recordingFilePath,alarm_type,alarm_description,alarm_reportFileName
+alarm_table.newColumns=alarm_id,monitor_id,point_id,area_id,alarm_taskname,alarm_time,alarm_temp,alarm_realTemp,alarm_snapFilePath,alarm_recordingFilePath,alarm_type,alarm_description,alarm_reportFileName
+alarm_table.types=int,int,int,int,varchar,datetime,float,float,varchar,varchar,int,varchar,varchar
+alarm_table.priority = 91
+
+
